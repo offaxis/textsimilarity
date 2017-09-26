@@ -15,3 +15,4 @@ Find similarity between 2 texts, short or long, to get average level between 0 a
 #### Dependencies
 * https://github.com/tdebatty/php-language-processing
 * https://github.com/darkopetreski/textcategorization
+ 
