@@ -7,23 +7,33 @@ class TextSimilarity {
     /*
      * Return average level of similiraty between 2 texts (0 is totally different, 1 is equal)
      */
-    public static function compare($first, $second) {
-        if( !$first || !$second ) {
-            return 0;
-        }
+     public static function compare($first, $second) {
+         if( !$first || !$second ) {
+             return 0;
+         }
 
-        if( $first === $second ) {
-            return 1;
-        }
+         if( $first === $second ) {
+             return 1;
+         }
 
-        return (
-                self::levenshtein($first, $second)
-                + self::jaroWinkler($first, $second)
-                + self::smithWatermanGotoh($first, $second)
-                + self::jaccard($first, $second)
-                + self::similarText($first, $second)
-            ) / 5;
-    }
+         $levelSum = 0;
+         $levelCount = 0;
+
+         if( strlen($first) <=255 && strlen($second) <=255) {
+             $distance = self::levenshtein($first, $second);
+             $stringLengthMax = max(strlen($first), strlen($second));
+             $levelSum += ($stringLengthMax - $distance) / $stringLengthMax;
+             $levelCount ++;
+         }
+         $levelSum += self::jaroWinkler($first, $second);
+         $levelSum += self::smithWatermanGotoh($first, $second);
+         $levelSum += self::jaccard($first, $second);
+         $levelSum += self::similarText($first, $second);
+
+         $levelCount += 4;
+
+         return $levelCount ? $levelSum / $levelCount : 0;
+     }
 
 
     public static function levenshtein($first, $second) {
