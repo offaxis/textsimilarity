@@ -1,0 +1,21 @@
+{
+    "name": "offaxis/textsimilarity",
+    "description": "Inspect text similarity from differents methods",
+    "authors": [
+        {
+            "name": "Off/Axis",
+            "email": "clement@offaxis.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "webd/language": "dev-master",
+        "darkopetreski/textcategorization": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OffAxis\\": "src/"
+        }
+    }
+}
