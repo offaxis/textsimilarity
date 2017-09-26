@@ -17,11 +17,11 @@ class TextSimilarity {
         }
 
         return (
-                OffAxis\levenshtein($first, $second)
-                + OffAxis\jaroWinkler($first, $second)
-                + OffAxis\smithWatermanGotoh($first, $second)
-                + OffAxis\jaccard($first, $second)
-                + OffAxis\similarText($first, $second)
+                self::levenshtein($first, $second)
+                + self::jaroWinkler($first, $second)
+                + self::smithWatermanGotoh($first, $second)
+                + self::jaccard($first, $second)
+                + self::similarText($first, $second)
             ) / 5;
     }
 
